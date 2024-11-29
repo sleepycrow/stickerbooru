@@ -1,0 +1,45 @@
+<!--<link phx-track-static rel="stylesheet" href={~p"/assets/home.css"} />-->
+
+<div class="home-wrapper">
+  <main class="home-container">
+    <h1><%= @instance_name %></h1>
+
+    <.flash_group flash={@flash} />
+
+    <form method="GET" action={~p"/"}>
+      <input
+        type="text"
+        name="q"
+        placeholder="goat sfw"
+      />
+      <button>ok go</button>
+    </form>
+
+    <%= if Enum.any?(@untagged) do %>
+      <h3>10 oldest untagged stickersets:</h3>
+      <ul class="stickerset-list">
+        <%= for stickerset <- @untagged do %>
+          <li class="stickerset-item">
+            <img
+              src={~p"/thumb/#{stickerset.id}"}
+              alt={stickerset.name}
+            />
+            
+            <div class="stickerset-item__meta">
+              <span class="name"><%= stickerset.name %></span>
+              <span class="id">(<%= stickerset.id %>)</span>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </main>
+
+  <%= if @random do %>
+    <img
+      src={~p"/thumb/#{@random.id}"}
+      alt={@random.name}
+      class="corner-sticker-decoration"
+    />
+  <% end %>
+</div>
