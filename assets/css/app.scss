@@ -1,0 +1,90 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.home-wrapper {
+	width: 100%;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	.home-container {
+		text-align: center;
+		width: 100%;
+		max-width: 600px;
+		margin: 0.5rem;
+		padding: 0.5rem;
+		background-color: #EEE;
+		border-radius: 4px;
+		
+		h1, h2, h3, h4 {
+			margin: 0.5em 0;
+		}
+	}
+
+	.corner-sticker-decoration {
+		display: block;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		z-index: -10;
+		min-width: 128px;
+		min-height: 128px;
+		width: 20%;
+		height: auto;
+		aspect-ratio: 1/1;
+		object-fit: contain;
+		pointer-events: none;
+	}
+}
+
+.stickerset-list {
+	list-style-type: none;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	width: 100%;
+
+	& > li {
+		flex: 0 0 100px;
+	}
+}
+
+.stickerset-item {
+	display: block;
+	width: 100px;
+	margin: 0.25rem;
+	max-width: 100px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-align: center;
+
+	img {
+		width: 64px;
+		height: 64px;
+		object-fit: contain;
+	}
+}
+
+.stickerset-item__meta {
+	& > .name {
+		font-weight: bold;
+	}
+
+	& > .id {
+		font-weight: normal;
+		vertical-align: super;
+		font-size: 0.7rem;
+		opacity: 0.5;
+	}
+}

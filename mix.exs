@@ -43,6 +43,7 @@ defmodule Stickerbooru.MixProject do
       {:floki, ">= 0.30.0", only: :test},
       {:phoenix_live_dashboard, "~> 0.8.3"},
       {:esbuild, "~> 0.8", runtime: Mix.env() == :dev},
+      {:dart_sass, "~> 0.7.0", runtime: Mix.env() == :dev},
       {:swoosh, "~> 1.5"},
       {:finch, "~> 0.13"},
       {:telemetry_metrics, "~> 1.0"},
@@ -68,10 +69,17 @@ defmodule Stickerbooru.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
-      "assets.setup": ["esbuild.install --if-missing"],
-      "assets.build": ["esbuild stickerbooru"],
+      "assets.setup": [
+        "esbuild.install --if-missing",
+        "sass.install --if-missing"
+      ],
+      "assets.build": [
+        "esbuild stickerbooru",
+        "sass stickerbooru"
+      ],
       "assets.deploy": [
         "esbuild stickerbooru --minify",
+        "sass stickerbooru",
         "phx.digest"
       ]
     ]

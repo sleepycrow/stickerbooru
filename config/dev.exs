@@ -25,7 +25,8 @@ config :stickerbooru, StickerbooruWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "USdseZ3L56A7csdM00qDIrXder9C2wv7ES9aLGwL/tSAeDqjcYoj+d/sPYPcmSU+",
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:stickerbooru, ~w(--sourcemap=inline --watch)]}
+    esbuild: {Esbuild, :install_and_run, [:stickerbooru, ~w(--sourcemap=inline --watch)]},
+    dart_sass: {DartSass, :install_and_run, [:stickerbooru, ~w(--watch)]}
   ]
 
 # ## SSL Support
