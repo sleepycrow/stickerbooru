@@ -85,6 +85,7 @@ defmodule StickerbooruWeb do
       import Phoenix.HTML
       # Core UI components and translation
       import StickerbooruWeb.CoreComponents
+      import StickerbooruWeb.CommonComponents
       import StickerbooruWeb.Gettext
 
       # Shortcut for generating JS commands
@@ -110,4 +111,8 @@ defmodule StickerbooruWeb do
   defmacro __using__(which) when is_atom(which) do
     apply(__MODULE__, which, [])
   end
+end
+
+defmodule StickerbooruWeb.ObjectNotFoundError do
+  defexception [:message, plug_status: 404]
 end

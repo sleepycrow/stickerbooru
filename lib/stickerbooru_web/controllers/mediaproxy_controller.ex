@@ -11,8 +11,6 @@ defmodule StickerbooruWeb.MediaProxyController do
         |> List.last()
       {_, file_type} = Enum.find(resp.headers, &(elem(&1, 0) == "content-type"))
 
-      IO.inspect("Proxying " <> file_name <> " as thumb for sticker pack ID " <> id)
-
       conn
       |> send_download(
         {:binary, resp.body},

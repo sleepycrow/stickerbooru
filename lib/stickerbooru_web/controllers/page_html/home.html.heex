@@ -19,16 +19,8 @@
       <h3>10 oldest untagged stickersets:</h3>
       <ul class="stickerset-list">
         <%= for stickerset <- @untagged do %>
-          <li class="stickerset-item">
-            <img
-              src={~p"/thumb/#{stickerset.id}"}
-              alt={stickerset.name}
-            />
-            
-            <div class="stickerset-item__meta">
-              <span class="name"><%= stickerset.name %></span>
-              <span class="id">(<%= stickerset.id %>)</span>
-            </div>
+          <li>
+            <.stickerset_item stickerset={stickerset} />
           </li>
         <% end %>
       </ul>
@@ -37,7 +29,7 @@
 
   <%= if @random do %>
     <img
-      src={~p"/thumb/#{@random.id}"}
+      src={~p"/thumbs/#{@random.id}"}
       alt={@random.name}
       class="corner-sticker-decoration"
     />
