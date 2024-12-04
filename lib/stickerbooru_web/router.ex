@@ -20,7 +20,10 @@ defmodule StickerbooruWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
-    get "/thumb/:id", MediaProxyController, :stickerset_thumbnail
+
+    get "/stickersets/:id", StickersetController, :show
+
+    get "/thumbs/:id", MediaProxyController, :stickerset_thumbnail
   end
 
   # Other scopes may use custom stacks.
